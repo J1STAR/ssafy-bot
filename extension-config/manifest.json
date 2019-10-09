@@ -1,0 +1,17 @@
+{
+  // Required
+  "manifest_version": 2,
+
+  "name": "SSAFY ChatBot Extension",
+  "version": "0.0.1",
+  "description": "ChatBot Extension for SSAFY User",
+
+  "permissions": ["*://edu.ssafy.com/*"],
+  "content_scripts": [{
+    "matches": ["*://edu.ssafy.com/*"],
+    "css": ["css/app.c65c1356.css"],
+    "js": ["background.js"],
+    "run_at":"document_end"
+  }],
+  "web_accessible_resources": ["index.html", "css/app.c65c1356.css", "js/app.98d588b0.js", "js/chunk-vendors.bd33d734.js"]
+}

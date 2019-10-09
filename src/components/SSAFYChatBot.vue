@@ -3,64 +3,10 @@
 		<div id="close-btn" @click="closeChatScreen"></div>
 		<div id="chatbot-header"></div>
 		<div id="chatbot-body">
-			<div class="user">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">bbbbbbbbbbbbbbbbbbbbbbbbb</div>
-			</div>
 			<div class="bot">
 				<div class="thumbnail"></div>
 				<div class="chat-wrapper">
-					aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-				</div>
-			</div>
-			<div class="user">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">bbbbbbbbbbbbbbbbbbbbbbbbb</div>
-			</div>
-			<div class="bot">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">
-					aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-				</div>
-			</div>
-			<div class="user">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">bbbbbbbbbbbbbbbbbbbbbbbbb</div>
-			</div>
-			<div class="bot">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">
-					aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-				</div>
-			</div>
-			<div class="user">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">bbbbbbbbbbbbbbbbbbbbbbbbb</div>
-			</div>
-			<div class="bot">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">
-					aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-				</div>
-			</div>
-			<div class="user">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">bbbbbbbbbbbbbbbbbbbbbbbbb</div>
-			</div>
-			<div class="bot">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">
-					aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-				</div>
-			</div>
-			<div class="user">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">bbbbbbbbbbbbbbbbbbbbbbbbb</div>
-			</div>
-			<div class="bot">
-				<div class="thumbnail"></div>
-				<div class="chat-wrapper">
-					aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+					안녕하세요. SSAFY BOT입니다. 저에게 말을 걸어주세요.
 				</div>
 			</div>
 		</div>
@@ -81,7 +27,6 @@
 			};
 		},
 		mounted() {
-
 		},
 		methods: {
 			openChatScreen: function () {
@@ -93,12 +38,11 @@
 				this.isActive = false
 			},
 			sendChat: function() {
-				this.$http.get('http://2d6d1cf4.ngrok.io/chat?q='+this.message).then((res) => {
+				this.$http.get('http://j1star.ddns.net:15000/chat?q='+this.message).then((res) => {
 					document.querySelector("#chatbot-body").innerHTML += "<div class=\"bot\">\n" +
 						"\t\t\t\t<div class=\"thumbnail\"></div>\n" +
 						"\t\t\t\t<div class=\"chat-wrapper\">"+res.data+"</div>\n" +
 						"\t\t\t</div>";
-
 					document.querySelector("#chatbot-body").scrollTop = document.querySelector("#chatbot-body").scrollHeight;
 				})
 				document.querySelector("#chatbot-body").innerHTML += "<div class=\"user\">\n" +
@@ -116,13 +60,13 @@
 
 <style lang="scss">
 	#chatbot-container {
-		position: absolute;
+		position: fixed;
 		bottom: 10px;
 		right: 10px;
 
 		background-color: #439FF5;
 
-		background-image: url('../assets/img/ssafy-icon.png');
+		background-image: url('https://i.imgur.com/2oj8PKT.png');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: 25px;
@@ -133,6 +77,8 @@
 		border-radius: 50px;
 
 		overflow: hidden;
+
+		z-index: 999;
 
 		#chatbot-header, #chatbot-body, #chatbot-footer, #close-btn {
 			visibility: hidden;
@@ -183,13 +129,24 @@
 				width: 0 !important
 			}
 		}
+
+		#chatbot-footer input {
+			width: 95%;
+			height: 66px;
+
+			padding-left: 20px;
+			padding-right: 20px;
+
+			border-radius: 34px;
+			border: 0;
+		}
 	}
 
 	.bot, .user {
+		clear: both;
 		width: 100%;
 		height: 10%;
 		min-height: 10%;
-
 		padding: 5px;
 
 		.chat-wrapper {
@@ -200,7 +157,7 @@
 			width: 80%;
 			min-height: 100%;
 
-			margin-top: 5px;
+			margin-top: 15px;
 			padding: 10px;
 
 			text-align: left;
@@ -215,7 +172,7 @@
 			width: 20%;
 			height: 100%;
 
-			background-image: url('../assets/img/ssafy-icon.png');
+			background-image: url('https://i.imgur.com/2oj8PKT.png');
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: 40px;
@@ -233,7 +190,7 @@
 			width: 20%;
 			height: 100%;
 
-			background-image: url('../assets/img/user-icon.png');
+			background-image: url('https://i.imgur.com/p4Tnnkp.png');
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: 40px;
