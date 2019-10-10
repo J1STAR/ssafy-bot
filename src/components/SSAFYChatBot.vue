@@ -1,7 +1,7 @@
 <template>
 	<div id="chatbot-container" :class="{open: isActive}" @click="openChatScreen">
 		<div id="close-btn" @click="closeChatScreen"></div>
-		<div id="chatbot-header"></div>
+		<div id="chatbot-header">SSAFY BOT</div>
 		<div id="chatbot-body">
 			<div class="bot">
 				<div class="thumbnail"></div>
@@ -38,7 +38,7 @@
 				this.isActive = false
 			},
 			sendChat: function() {
-				this.$http.get('http://j1star.ddns.net:15000/chat?q='+this.message).then((res) => {
+				this.$http.get('http://j1star.ddns.net:8080/chat?q='+this.message).then((res) => {
 					document.querySelector("#chatbot-body").innerHTML += "<div class=\"bot\">\n" +
 						"\t\t\t\t<div class=\"thumbnail\"></div>\n" +
 						"\t\t\t\t<div class=\"chat-wrapper\">"+res.data+"</div>\n" +
@@ -100,7 +100,9 @@
 			top: 0;
 			right: 0;
 
-			background-color: red;
+			background-image: url("https://i.imgur.com/g5A35fr.png");
+			background-size: 24px;
+			background-color: transparent;
 
 			width: 24px;
 			height: 24px;
@@ -111,6 +113,11 @@
 
 			width: 100%;
 			height: 10%;
+		}
+
+		#chatbot-header {
+			color: white;
+			font-size: 64px;
 		}
 
 		#chatbot-body {

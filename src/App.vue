@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import SSAFYChatBot from "@/components/SSAFYChatBot";
 export default {
   name: 'app',
@@ -16,14 +15,17 @@ export default {
 </script>
 
 <style>
-* {
+  @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+
+  * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
